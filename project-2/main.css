@@ -7,26 +7,53 @@ body {
   font-family: helvetica;
 }
 
-.poke-header {
+#poke-header {
   background-color: #ee1515;
-  height: 200px;
+  height: 250px;
 }
 
-.poke-header2 {
+#poke-header2 {
   background-color: #222224;
   height: 25px;
 }
 
-.pokeball-center {
+#pokeball-center {
   background-color: white;
   height: 400px;
   width: 400px;
   border: 10px solid #222224;
   border-radius: 50%;
   margin: -200px auto;
-  /* border-bottom-color: transparent;
-  border-left-color: transparent; */
-  /* transform: rotate(135deg); */
+  animation: tada 3s;
+}
 
+.trainer {
+  width: 80%;
+  margin: 10px auto;
+  animation: tada 3s;
+}
 
+@keyframes tada {
+  from {
+   -webkit-transform: scale3d(1, 1, 1);
+   transform: scale3d(1, 1, 1);
+ }
+ 10%,
+ 20% {
+   transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+ }
+ 30%,
+ 50%,
+ 70%,
+ 90% {
+   transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+ }
+ 40%,
+ 60%,
+ 80% {
+   transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+ }
+ to {
+   transform: scale3d(1, 1, 1);
+ }
 }
