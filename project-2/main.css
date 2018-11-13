@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: helvetica;
+}
+
+.poke-header {
+  background-color: #ee1515;
+  height: 200px;
+}
+
+.poke-header2 {
+  background-color: #222224;
+  height: 25px;
+}
+
+.pokeball-center {
+  background-color: white;
+  height: 400px;
+  width: 400px;
+  border: 10px solid #222224;
+  border-radius: 50%;
+  margin: -200px auto;
+  /* border-bottom-color: transparent;
+  border-left-color: transparent; */
+  /* transform: rotate(135deg); */
+
+
+}
