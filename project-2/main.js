@@ -1,4 +1,4 @@
-class Pokedex {
+class Trainer {
   constructor(url, classnames){
     this.url = url;
     this.classnames = classnames;
@@ -7,10 +7,10 @@ class Pokedex {
   }
   execute(){
     this.trainer.appendChild(this.image);
-    this.image.src=this.url;
-    this.image.classNames = this.classnames;
+    this.image.src = this.url;
+    this.image.className = this.classnames;
   }
 }
 
-let Kendra = new Pokedex("trainer.png", "trainer");
+let Kendra = new Trainer("trainer.png", "trainer");
 Kendra.execute();

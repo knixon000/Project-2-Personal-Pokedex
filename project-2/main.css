@@ -9,7 +9,7 @@ body {
 
 #poke-header {
   background-color: #ee1515;
-  height: 250px;
+  height: 300px;
 }
 
 #poke-header2 {
@@ -29,7 +29,7 @@ body {
 
 .trainer {
   width: 80%;
-  margin: 10px auto;
+  margin: 10px 40px;
   animation: tada 3s;
 }
 
