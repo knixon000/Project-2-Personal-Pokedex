@@ -24,12 +24,14 @@ class Pokemon {
     this.def = def;
     this.spAtk = spAtk;
     this.spDef = spDef;
+
   }
   execute2(){
-    
+
   }
 }
 
+// let Lucario = new Pokemon()
 
 axios.get("https://fizal.me/pokeapi/api/v2/id/447.json")
   .then(function (response){

@@ -57,3 +57,10 @@ body {
    transform: scale3d(1, 1, 1);
  }
 }
+
+
+#Lucario {
+  border: 1px solid black;
+  height: 50px;
+  
+}
