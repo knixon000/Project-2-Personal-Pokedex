@@ -61,6 +61,13 @@ body {
 
 #Lucario {
   border: 1px solid black;
-  height: 50px;
-  
+  height: 200px;
+  width: 200px;
+  margin-top: 300px;
+  margin-left: 20px;
+}
+
+#lSprite {
+  width: 200px;
+  height: 200px;
 }

@@ -4,12 +4,20 @@ class Trainer {
     this.classnames = classnames;
     this.image = document.createElement('img');
     this.trainer = document.getElementById('pokeball-center');
+
+    this.pokemon = []; //all pokemon objects
   }
   execute(){
     this.trainer.appendChild(this.image);
     this.image.src = this.url;
     this.image.className = this.classnames;
   }
+  // all(){
+  //
+  // }
+  // get(){
+  //
+  // }
 }
 
 let Kendra = new Trainer("trainer.png", "trainer");
@@ -17,33 +25,31 @@ Kendra.execute();
 
 
 class Pokemon {
-  constructor(sprite, hp, atk, def, spAtk, spDef){
+  constructor(sprite, atk, def, abilities){
+    // sprite = img
+    // atk = integer
+    // def = integer
+    // abilities = array of strings
     this.sprite = sprite;
     this.hp = hp;
     this.atk = atk;
     this.def = def;
-    this.spAtk = spAtk;
-    this.spDef = spDef;
-
-  }
-  execute2(){
+    this.abilities = abilities;
 
   }
 }
 
-// let Lucario = new Pokemon()
+axios.get("https://fizal.me/pokeapi/api/v2/id/4.json")
+  .then(function (response){
+    console.log(response.data);
+});
 
 axios.get("https://fizal.me/pokeapi/api/v2/id/447.json")
   .then(function (response){
     console.log(response.data);
-  });
-
-axios.get("https://fizal.me/pokeapi/api/v2/id/4.json")
-  .then(function (response){
-    console.log(response.data);
-  });
+});
 
 axios.get("https://fizal.me/pokeapi/api/v2/id/653.json")
   .then(function (response){
     console.log(response.data);
-  });
+});
