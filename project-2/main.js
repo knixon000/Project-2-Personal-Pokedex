@@ -1,3 +1,9 @@
+//store all stats and elements for each pokemon in variables
+
+//put all axios here-one for each Pokemon
+
+//complete this selectors for all stats in Pokemon Class
+
 class Trainer {
   constructor(url, classnames){
     this.url = url;
