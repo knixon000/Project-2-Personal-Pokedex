@@ -1,35 +1,54 @@
 //store all stats and elements for each pokemon in variables
 
 //put all axios here-one for each Pokemon
-axios.get("https://fizal.me/pokeapi/api/v2/id/4.json")
-  .then(function (response){
-    console.log(response.data);
-});
-
 axios.get("https://fizal.me/pokeapi/api/v2/id/448.json")
   .then(function (response){
     console.log(response.data);
-    let lucarioSprite = document.createElement('img');
-    lucarioSprite.src = response.data.sprites.front_default;
-    document.getElementById('Lucario').appendChild(lucarioSprite);
-    
+    let sprite = response.data.sprites.front_default;
+    let hp = "Hp: " + response.data.stats[5].base_stat;
+    let atk = "Atk: " + response.data.stats[4].base_stat;
+    let def = "Def: " + response.data.stats[3].base_stat;
+    // let abilities = "Abilities: " + response.data.abilities;
+
+    let Lucario = new Pokemon(sprite,"Lucario", hp, atk, def);
+    Lucario.display();
 });
 
-axios.get("https://fizal.me/pokeapi/api/v2/id/653.json")
+axios.get("https://fizal.me/pokeapi/api/v2/id/6.json")
   .then(function (response){
     console.log(response.data);
+    let sprite = response.data.sprites.front_default;
+    let hp = "Hp: " + response.data.stats[5].base_stat;
+    let atk = "Atk: " + response.data.stats[4].base_stat;
+    let def = "Def: " + response.data.stats[3].base_stat;
+
+    let Charmander = new Pokemon(sprite,"Charizard", hp, atk, def);
+    Charmander.display();
+});
+
+axios.get("https://fizal.me/pokeapi/api/v2/id/655.json")
+  .then(function (response){
+    console.log(response.data);
+    let sprite = response.data.sprites.front_default;
+    let hp = "Hp: " + response.data.stats[5].base_stat;
+    let atk = "Atk: " + response.data.stats[4].base_stat;
+    let def = "Def: " + response.data.stats[3].base_stat;
+
+    let Delphox = new Pokemon(sprite,"Delphox", hp, atk, def);
+    Delphox.display();
 });
 
 //complete the selectors for all stats in Pokemon Class
 
 class Trainer {
-  constructor(url, classnames){
+  constructor(url, classnames, trainerName){
     this.url = url;
     this.classnames = classnames;
     this.image = document.createElement('img');
     this.trainer = document.getElementById('pokeball-center');
     this.trainerStatsDiv = document.getElementById('trainer-stats');
     this.trainerStats = document.createElement('ul');
+    this.trainerName = trainerName
 
     this.pokemon = []; //all pokemon objects
   }
@@ -73,7 +92,7 @@ Kendra.execute();
 
 
 class Pokemon {
-  constructor(sprite, hp, atk, def, abilities){
+  constructor(sprite, divId, hp, atk, def){
     // sprite = img
     //hp = integer
     // atk = integer
@@ -83,7 +102,29 @@ class Pokemon {
     this.hp = hp;
     this.atk = atk;
     this.def = def;
-    this.abilities = abilities;
+    // this.abilities = abilities;
+    this.divId = divId
+  }
+  display(){
+    let pokemonSprite = document.createElement('img');
+    pokemonSprite.src = this.sprite;
+    pokemonSprite.id = "size";
+    document.getElementById(this.divId).appendChild(pokemonSprite);
 
+    let pokemonHp = document.createElement('p');
+    pokemonHp.innerHTML = this.hp;
+    document.getElementById(this.divId).appendChild(pokemonHp);
+
+    let pokemonAttack = document.createElement('p');
+    pokemonAttack.innerHTML = this.atk;
+    document.getElementById(this.divId).appendChild(pokemonAttack);
+
+    let pokemonDefense = document.createElement('p');
+    pokemonDefense.innerHTML = this.def;
+    document.getElementById(this.divId).appendChild(pokemonDefense);
+
+    // let pokemonAbilities = document.createElement('p');
+    // pokemonAbilities.innerHTML = this.abilities;
+    // document.getElementById(this.divId).appendChild(pokemonAbilities);
   }
 }
