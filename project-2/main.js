@@ -1,5 +1,3 @@
-//store all stats and elements for each pokemon in variables
-
 //put all axios here-one for each Pokemon
 axios.get("https://fizal.me/pokeapi/api/v2/id/448.json")
   .then(function (response){
@@ -10,8 +8,9 @@ axios.get("https://fizal.me/pokeapi/api/v2/id/448.json")
     let def = "Def: " + response.data.stats[3].base_stat;
     // let abilities = "Abilities: " + response.data.abilities;
 
-    let Lucario = new Pokemon(sprite,"Lucario", hp, atk, def);
+    let Lucario = new Pokemon(sprite, "Lucario", hp, atk, def);
     Lucario.display();
+
 });
 
 axios.get("https://fizal.me/pokeapi/api/v2/id/6.json")
@@ -38,7 +37,7 @@ axios.get("https://fizal.me/pokeapi/api/v2/id/655.json")
     Delphox.display();
 });
 
-//complete the selectors for all stats in Pokemon Class
+//objects for Trainer and Pokemon components on the page
 
 class Trainer {
   constructor(url, classnames, trainerName){
@@ -51,6 +50,7 @@ class Trainer {
     this.trainerName = trainerName
 
     this.pokemon = []; //all pokemon objects
+    console.log(this.pokemon);
   }
   execute(){
     this.trainer.appendChild(this.image);
@@ -105,6 +105,13 @@ class Pokemon {
     // this.abilities = abilities;
     this.divId = divId
   }
+//another way to get sprites
+  // sprite(){
+  //   let div = document.getElementById('Lucario');
+  //   let img = document.createElement('img');
+  //   div.appendChild(img)
+  //   img.src = "https://play.pokemonshowdown.com/sprites/xyani/" + this.name +".gif";
+  // }
   display(){
     let pokemonSprite = document.createElement('img');
     pokemonSprite.src = this.sprite;
