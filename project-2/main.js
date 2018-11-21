@@ -52,7 +52,7 @@ class Trainer {
     this.trainer = document.getElementById('pokeball-center');
     this.trainerStatsDiv = document.getElementById('trainer-stats');
     this.trainerStats = document.createElement('ul');
-    this.trainerName = trainerName
+    this.trainerName = trainerName;
 
     this.pokemon = []; //all pokemon objects
     console.log(this.pokemon);
