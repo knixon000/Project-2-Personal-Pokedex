@@ -3,38 +3,43 @@ axios.get("https://fizal.me/pokeapi/api/v2/id/448.json")
   .then(function (response){
     console.log(response.data);
     let sprite = response.data.sprites.front_default;
-    let hp = "Hp: " + response.data.stats[5].base_stat;
-    let atk = "Atk: " + response.data.stats[4].base_stat;
-    let def = "Def: " + response.data.stats[3].base_stat;
+    let name = response.data.name;
+    let hp = response.data.stats[5].base_stat;
+    let atk = response.data.stats[4].base_stat;
+    let def = response.data.stats[3].base_stat;
     // let abilities = "Abilities: " + response.data.abilities;
 
-    let Lucario = new Pokemon(sprite, "Lucario", hp, atk, def);
+    let Lucario = new Pokemon(sprite, name, "Lucario", hp, atk, def);
     Lucario.display();
-
+    Kendra.pokemon.push(Lucario);
 });
 
-axios.get("https://fizal.me/pokeapi/api/v2/id/6.json")
+axios.get("https://fizal.me/pokeapi/api/v2/id/131.json")
   .then(function (response){
     console.log(response.data);
     let sprite = response.data.sprites.front_default;
-    let hp = "Hp: " + response.data.stats[5].base_stat;
-    let atk = "Atk: " + response.data.stats[4].base_stat;
-    let def = "Def: " + response.data.stats[3].base_stat;
+    let name = response.data.name;
+    let hp = response.data.stats[5].base_stat;
+    let atk = response.data.stats[4].base_stat;
+    let def = response.data.stats[3].base_stat;
 
-    let Charmander = new Pokemon(sprite,"Charizard", hp, atk, def);
-    Charmander.display();
+    let Lapras = new Pokemon(sprite, name, "Lapras", hp, atk, def);
+    Lapras.display();
+    Kendra.pokemon.push(Lapras);
 });
 
 axios.get("https://fizal.me/pokeapi/api/v2/id/655.json")
   .then(function (response){
     console.log(response.data);
     let sprite = response.data.sprites.front_default;
-    let hp = "Hp: " + response.data.stats[5].base_stat;
-    let atk = "Atk: " + response.data.stats[4].base_stat;
-    let def = "Def: " + response.data.stats[3].base_stat;
+    let name = response.data.name;
+    let hp = response.data.stats[5].base_stat;
+    let atk = response.data.stats[4].base_stat;
+    let def = response.data.stats[3].base_stat;
 
-    let Delphox = new Pokemon(sprite,"Delphox", hp, atk, def);
+    let Delphox = new Pokemon(sprite, name, "Delphox", hp, atk, def);
     Delphox.display();
+    Kendra.pokemon.push(Delphox);
 });
 
 //objects for Trainer and Pokemon components on the page
@@ -51,6 +56,16 @@ class Trainer {
 
     this.pokemon = []; //all pokemon objects
     console.log(this.pokemon);
+  }
+  all(){
+    return this.pokemon;
+  }
+  get(name){
+    for(let i = 0; i < this.pokemon.length; i++){
+      if(name === this.pokemon[i].name){
+        return this.pokemon[i];
+      }
+    }
   }
   execute(){
     this.trainer.appendChild(this.image);
@@ -79,12 +94,7 @@ class Trainer {
     this.trainerStatsDiv.appendChild(rumbleBadge);
 
   }
-  // all(){
-  //
-  // }
-  // get(){
-  //
-  // }
+
 }
 
 let Kendra = new Trainer("trainer.png", "trainer", "Kendra");
@@ -92,13 +102,14 @@ Kendra.execute();
 
 
 class Pokemon {
-  constructor(sprite, divId, hp, atk, def){
+  constructor(sprite, name, divId, hp, atk, def){
     // sprite = img
     //hp = integer
     // atk = integer
     // def = integer
     // abilities = array of strings
     this.sprite = sprite;
+    this.name = name;
     this.hp = hp;
     this.atk = atk;
     this.def = def;
@@ -118,16 +129,20 @@ class Pokemon {
     pokemonSprite.id = "size";
     document.getElementById(this.divId).appendChild(pokemonSprite);
 
+    let pokemonName = document.createElement('p');
+    pokemonName.innerHTML = "Name: " + this.name;
+    document.getElementById(this.divId).appendChild(pokemonName);
+
     let pokemonHp = document.createElement('p');
-    pokemonHp.innerHTML = this.hp;
+    pokemonHp.innerHTML = "Hp: " + this.hp;
     document.getElementById(this.divId).appendChild(pokemonHp);
 
     let pokemonAttack = document.createElement('p');
-    pokemonAttack.innerHTML = this.atk;
+    pokemonAttack.innerHTML = "Atk: " + this.atk;
     document.getElementById(this.divId).appendChild(pokemonAttack);
 
     let pokemonDefense = document.createElement('p');
-    pokemonDefense.innerHTML = this.def;
+    pokemonDefense.innerHTML = "Def: " + this.def;
     document.getElementById(this.divId).appendChild(pokemonDefense);
 
     // let pokemonAbilities = document.createElement('p');
